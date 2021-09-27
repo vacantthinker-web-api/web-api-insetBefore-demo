@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>web-api-insetBefore-demo</title>
+</head>
+<body>
+<p>
+    <button id="button1">button1</button>
+</p>
+<p>
+    <button id="button2">button2</button>
+</p>
+<p>
+    <button id="resetButton">resetButton</button>
+</p>
+
+<ul id="nav">
+    <li id="a">A</li>
+    <li id="b">B</li>
+    <li id="c">C</li>
+</ul>
+
+<script>
+
+    document.getElementById('button1').addEventListener('click', function () {
+        let parentElement = document.getElementById('nav');
+        let elementB = document.getElementById('b');
+
+        // 初始为A, B, C
+        // 点击button1 --> A, C, B
+        parentElement.insertBefore(elementB, null) // referenceNode为null, 意味在父元素队尾插入
+    })
+
+    document.getElementById('button2').addEventListener('click', function () {
+        let parentElement = document.getElementById('nav');
+        let elementB = document.getElementById('b');
+
+        let elementLi = document.createElement('li');
+        elementLi.id = 'd'
+        elementLi.innerText = 'D'
+
+        let refChild = elementB.nextSibling;
+        // nextSibling 紧挨着B的下一个兄弟[同级别]元素
+        parentElement.insertBefore(elementLi, refChild)
+
+    })
+    document.getElementById('resetButton').addEventListener('click', function () {
+        let parentElement = document.getElementById('nav');
+        let elementA = document.getElementById('a');
+        let elementB = document.getElementById('b');
+        let elementC = document.getElementById('c');
+
+        parentElement.textContent = ''
+
+        parentElement.insertBefore(elementA, null)
+        parentElement.insertBefore(elementB, null)
+        parentElement.insertBefore(elementC, null)
+    })
+
+
+</script>
+</body>
+</html>
