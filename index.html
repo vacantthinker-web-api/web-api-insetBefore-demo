@@ -45,6 +45,8 @@
 
         let refChild = elementB.nextSibling;
         // nextSibling 紧挨着B的下一个兄弟[同级别]元素
+        // 如果为C, --> A, B, D, C
+        // 如果为null, --> A, C, B, D
         parentElement.insertBefore(elementLi, refChild)
 
     })
